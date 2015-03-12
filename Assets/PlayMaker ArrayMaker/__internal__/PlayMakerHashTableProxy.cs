@@ -1,8 +1,5 @@
-//	(c) Jean Fabre, 2011-2012 All rights reserved.
+//	(c) Jean Fabre, 2011-2013 All rights reserved.
 //	http://www.fabrejean.net
-//  contact: http://www.fabrejean.net/contact.htm
-//
-// Version Alpha 0.92
 
 // INSTRUCTIONS
 // Drop this script onto a GameObject.
@@ -71,17 +68,6 @@ using System.Collections.Generic;
 
 public class PlayMakerHashTableProxy : PlayMakerCollectionProxy {
 	
-	
-	// let the user easily add an HashTable without having to know where it is located in the assets
-/*    [MenuItem ("Component/PlayMaker/Add HashTable proxy to selected Object")]
-    static void AddPlayMakerHashTableProxyComponent () {
-			 foreach (Transform transform in Selection.transforms) {
-                Undo.RegisterUndo(Selection.transforms,"PlayMakerHashTableProxy Additions");
-                transform.gameObject.AddComponent("PlayMakerHashTableProxy");
-            }
-    }
-	*/
-	
 	// the actual hashTable
 	public Hashtable _hashTable;
 	
@@ -89,17 +75,39 @@ public class PlayMakerHashTableProxy : PlayMakerCollectionProxy {
     {
         get { return _hashTable; }
     }
+	
+	private Hashtable _snapShot;
+	
 	public void Awake()
 	{	
 		_hashTable = new Hashtable();
 		
 		PreFillHashTable();
+		
+		TakeSnapShot();
 	}
 	
 	public bool isCollectionDefined()
 	{
 		return hashTable != null;
 	}
+	
+	public void TakeSnapShot()
+	{
+		_snapShot = new Hashtable();
+		foreach(object key in _hashTable.Keys){		
+			_snapShot[key] = _hashTable[key];
+		}
+	}
+	
+	public void RevertToSnapShot()
+	{
+		_hashTable = new Hashtable();
+		foreach(object key in _snapShot.Keys){		
+			_hashTable[key] = _snapShot[key];
+		}
+	}
+	
 	
 	public void InspectorEdit(int index){
 		dispatchEvent(setEvent,index,"int");
@@ -141,11 +149,14 @@ public class PlayMakerHashTableProxy : PlayMakerCollectionProxy {
 				case (VariableEnum.Texture):
 					hashTable[preFillKeyList[i]] = preFillTextureList[i];;	
 					break;
-//				case (VariableEnum.Vector2):
-				//	hashTable[preFillKeyList[i]] = preFillVector2List[i];		
-				//	break;
+				case (VariableEnum.Vector2):
+					hashTable[preFillKeyList[i]] = preFillVector2List[i];		
+					break;
 				case (VariableEnum.Vector3):
 					hashTable[preFillKeyList[i]] = preFillVector3List[i];		
+					break;
+				case (VariableEnum.AudioClip):
+					hashTable[preFillKeyList[i]] = preFillAudioClipList[i];		
 					break;
 				default:
 					break;

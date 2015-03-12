@@ -32,11 +32,13 @@ public class DataMakerXmlEditor : Editor {
 	
 
 	// let the user easily add an DataMaker Xml source Proxy
-    [MenuItem ("PlayMaker Add ons/DataMaker/Xml/Add Xml Proxy to selected Objects")]
+    [MenuItem ("PlayMaker/Addons/DataMaker/Xml/Add Xml Proxy to selected Objects")]
     static void AddDataMakerXmlProxyComponent () {
 		 foreach (Transform transform in Selection.transforms) {
-            Undo.RegisterUndo(Selection.transforms,"DataMakerXmlProxy Additions");
-            transform.gameObject.AddComponent("DataMakerXmlProxy");
+			Undo.AddComponent<DataMakerXmlProxy>(transform.gameObject);
+			//Undo.RecordObjects(Selection.transforms,"DataMakerXmlProxy Additions");
+            //Undo.RegisterUndo(Selection.transforms,"DataMakerXmlProxy Additions");
+           // transform.gameObject.AddComponent("DataMakerXmlProxy");
         }
     }
 	

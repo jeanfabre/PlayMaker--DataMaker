@@ -1,8 +1,6 @@
-//	(c) Jean Fabre, 2012 All rights reserved.
+//	(c) Jean Fabre, 2011-2013 All rights reserved.
 //	http://www.fabrejean.net
-//
-// Version Alpha 0.92
-//
+
 
 using UnityEditor;
 using UnityEngine;
@@ -16,14 +14,12 @@ public class PlayMakerHashTableProxyInspector : PlayMakerCollectionProxyInspecto
 {
 	
 		// let the user easily add an HashTable without having to know where it is located in the assets
-    [MenuItem ("PlayMaker Add ons/ArrayMaker/Add HashTable Proxy to selected Objects")]
+    [MenuItem ("PlayMaker/Addons/ArrayMaker/Add HashTable Proxy to selected Objects")]
     static void AddPlayMakerHashTableProxyComponent () {
 			 foreach (Transform transform in Selection.transforms) {
-                Undo.RegisterUndo(Selection.transforms,"PlayMakerHashTableProxy Additions");
                 transform.gameObject.AddComponent("PlayMakerHashTableProxy");
             }
     }
-	
 	
 	
 	public void OnEnable () {
@@ -122,13 +118,27 @@ public class PlayMakerHashTableProxyInspector : PlayMakerCollectionProxyInspecto
 						proxy.hashTable[keysList[i]]= (string)EditorGUILayout.TextField(label, (string)proxy.hashTable[keysList[i]]);
 					}else if (proxy.hashTable[keysList[i]].GetType() == typeof(Texture2D)) {
 						
-						if (proxy.TextureElementSmall){EditorGUIUtility.LookLikeInspector();}
-						proxy.hashTable[keysList[i]]= (Texture2D)EditorGUILayout.ObjectField(label,(Texture2D)proxy.hashTable[keysList[i]],typeof(Texture2D),false);
-						if (proxy.TextureElementSmall){EditorGUIUtility.LookLikeControls();}
+						GUILayout.BeginHorizontal();
+							GUILayout.Space(15);
+							GUILayout.Label(label);
+							GUILayout.FlexibleSpace();
+						
+							if (proxy.TextureElementSmall)
+							{
+									proxy.hashTable[keysList[i]]= (Texture2D)EditorGUILayout.ObjectField((Texture2D)proxy.hashTable[keysList[i]],typeof(Texture2D),false);
+							}else{
+									proxy.hashTable[keysList[i]]= (Texture2D)EditorGUILayout.ObjectField("",(Texture2D)proxy.hashTable[keysList[i]],typeof(Texture2D),false);
+								
+							}
+							GUILayout.Space(10);
+						GUILayout.EndHorizontal(); 
+						
 					}else if (proxy.hashTable[keysList[i]].GetType() == typeof(Vector2)) {
 						proxy.hashTable[keysList[i]]= (Vector2)EditorGUILayout.Vector2Field(label, (Vector2)proxy.hashTable[keysList[i]]);
 					}else if (proxy.hashTable[keysList[i]].GetType() == typeof(Vector3)) {
 						proxy.hashTable[keysList[i]]= (Vector3)EditorGUILayout.Vector3Field(label, (Vector3)proxy.hashTable[keysList[i]]);
+						}else if (proxy.hashTable[keysList[i]].GetType() == typeof(AudioClip)) {
+						proxy.hashTable[keysList[i]]= (AudioClip)EditorGUILayout.ObjectField(label, (AudioClip)proxy.hashTable[keysList[i]],typeof(AudioClip),true);
 					}else{
 						// OUPS
 						Debug.Log(proxy.hashTable[keysList[i]].GetType());

@@ -1,8 +1,5 @@
-//	(c) Jean Fabre, 2011 All rights reserved.
+//	(c) Jean Fabre, 2011-2013 All rights reserved.
 //	http://www.fabrejean.net
-//  contact: http://www.fabrejean.net/contact.htm
-//
-// Version Alpha 0.92
 
 // This is the HashTable abstract class in between actual actions and the CollectionsAction root for all actions related to HashTable
 
@@ -18,7 +15,10 @@ namespace HutongGames.PlayMaker.Actions
 		
 		protected bool SetUpHashTableProxyPointer(GameObject aProxyGO,string nameReference){
 			
+		//	UnityEngine.Debug.Log(aProxyGO);
+			
 			if (aProxyGO == null){
+				
 				return false;
 			}
 			 proxy = GetHashTableProxyPointer(aProxyGO,nameReference,false);

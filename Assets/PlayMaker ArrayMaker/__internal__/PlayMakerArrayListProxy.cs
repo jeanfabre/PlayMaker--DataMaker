@@ -1,8 +1,5 @@
-//	(c) Jean Fabre, 2011-2012 All rights reserved.
+//	(c) Jean Fabre, 2011-2013 All rights reserved.
 //	http://www.fabrejean.net
-//  contact: http://www.fabrejean.net/contact.htm
-//
-// Version Alpha 0.92
 
 // INSTRUCTIONS
 // Drop this script onto a GameObject.
@@ -102,19 +99,36 @@ public class PlayMakerArrayListProxy : PlayMakerCollectionProxy {
         get { return _arrayList; }
     }
 	
+	// the copy of the initial array or when ArrayListTakeSnapShot action is used.
+	private ArrayList _snapShot;
+	
 	
 	
 	public void Awake()
 	{	
 		_arrayList = new ArrayList();
 		PreFillArrayList();
+		
+		TakeSnapShot();
 	}
+	
 	
 	public bool isCollectionDefined()
 	{
 		return arrayList != null;
 	}
 	
+	public void TakeSnapShot()
+	{
+		_snapShot = new ArrayList();
+		_snapShot.AddRange(_arrayList);
+	}
+	
+	public void RevertToSnapShot()
+	{
+		_arrayList = new ArrayList();
+		_arrayList.AddRange(_snapShot);
+	}
 	
 	// compose Add so that we can broadcast events
 	public void Add(object value,string type,bool silent = false)
@@ -184,7 +198,6 @@ public class PlayMakerArrayListProxy : PlayMakerCollectionProxy {
 		
 		switch (preFillType) {
 			case (VariableEnum.Bool):
-				
 				arrayList.InsertRange(0,preFillBoolList);
 				break;
 			case (VariableEnum.Color):
@@ -214,11 +227,14 @@ public class PlayMakerArrayListProxy : PlayMakerCollectionProxy {
 			case (VariableEnum.Texture):
 				arrayList.InsertRange(0,preFillTextureList);	
 				break;
-		//	case (VariableEnum.Vector2):
-		//		arrayList.InsertRange(0,preFillVector2List);		
-		//		break;
+			case (VariableEnum.Vector2):
+				arrayList.InsertRange(0,preFillVector2List);		
+				break;
 			case (VariableEnum.Vector3):
 				arrayList.InsertRange(0,preFillVector3List);		
+				break;
+			case (VariableEnum.AudioClip):
+				arrayList.InsertRange(0,preFillAudioClipList);		
 				break;
 			default:
 				break;

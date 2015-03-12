@@ -1,8 +1,5 @@
-//	(c) Jean Fabre, 2011-2012 All rights reserved.
+//	(c) Jean Fabre, 2011-2013 All rights reserved.
 //	http://www.fabrejean.net
-//  contact: http://www.fabrejean.net/contact.htm
-//
-// Version Alpha 0.92
 
 // root of any Collections Actions ( arrayList, HashTable for now)
 

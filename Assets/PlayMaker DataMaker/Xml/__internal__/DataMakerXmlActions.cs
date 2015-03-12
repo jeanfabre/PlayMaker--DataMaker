@@ -1,8 +1,5 @@
-// (c) Copyright HutongGames, LLC 2010-2012. All rights reserved.
-//
-// © 2012 Jean Fabre http://www.fabrejean.net
-//
-//
+// (c) Copyright HutongGames, LLC 2010-2015. All rights reserved.
+
 using UnityEngine;
 using System.Collections;
 

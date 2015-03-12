@@ -1,8 +1,5 @@
 //	(c) Jean Fabre, 2011-2013 All rights reserved.
 //	http://www.fabrejean.net
-//  contact: http://www.fabrejean.net/contact.htm
-//
-// Version Alpha 0.92
 
 // INSTRUCTIONS
 // Use this action to destroy a PlayMakerArrayListProxy component.

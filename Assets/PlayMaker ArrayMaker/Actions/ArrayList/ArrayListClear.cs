@@ -1,8 +1,5 @@
 //	(c) Jean Fabre, 2011-2013 All rights reserved.
 //	http://www.fabrejean.net
-//  contact: http://www.fabrejean.net/contact.htm
-//
-// Version Alpha 0.92
 
 // INSTRUCTIONS
 // Drop a PlayMakerArrayList script onto a GameObject, and define a unique name for reference if several PlayMakerArrayList coexists on that GameObject.
@@ -14,7 +11,7 @@ using UnityEngine;
 namespace HutongGames.PlayMaker.Actions
 {
 	[ActionCategory("ArrayMaker/ArrayList")]
-	[Tooltip("Sets element to zero, false or null ( depending on the elements) of a PlayMaker ArrayList Proxy component")]
+	[Tooltip("Removes all elements from a PlayMaker ArrayList Proxy component")]
 	public class ArrayListClear : ArrayListActions
 	{
 		[ActionSection("Set up")]

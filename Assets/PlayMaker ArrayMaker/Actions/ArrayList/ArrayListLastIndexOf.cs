@@ -1,8 +1,5 @@
 //	(c) Jean Fabre, 2011-2013 All rights reserved.
 //	http://www.fabrejean.net
-//  contact: http://www.fabrejean.net/contact.htm
-//
-// Version Alpha 0.92
 
 // INSTRUCTIONS
 // Drop a PlayMakerArrayList script onto a GameObject, and define a unique name for reference if several PlayMakerArrayList coexists on that GameObject.
@@ -49,7 +46,6 @@ namespace HutongGames.PlayMaker.Actions
 				
 		[RequiredField]
 		[Tooltip("The index of the last item described below")]
-		[UIHint(UIHint.Variable)]
 		public FsmInt lastIndexOf;
 		
 				
@@ -102,21 +98,21 @@ namespace HutongGames.PlayMaker.Actions
 			try{
 				if (startIndex.Value == 0 && count.Value == 0){
 					
-					index = proxy.arrayList.LastIndexOf(item);
+					index = PlayMakerUtils_Extensions.LastIndexOf(proxy.arrayList,item);
 		
 				}else if (count.Value == 0 ){
 					if (startIndex.Value<0 || startIndex.Value>=proxy.arrayList.Count){
 						Debug.LogError("start index out of range");
 						return;
 					}
-						index = proxy.arrayList.LastIndexOf(item,startIndex.Value);
+						index = PlayMakerUtils_Extensions.LastIndexOf(proxy.arrayList,item,startIndex.Value);
 					
 				}else{
 					if (startIndex.Value<0 || startIndex.Value>=(proxy.arrayList.Count-count.Value)){
 						Debug.LogError("start index and count out of range");
 						return;
 					}
-					index = proxy.arrayList.LastIndexOf(item,startIndex.Value,count.Value);
+					index = PlayMakerUtils_Extensions.LastIndexOf(proxy.arrayList,item,startIndex.Value,count.Value);
 				}
 			}catch(System.Exception e){
 				Debug.LogError(e.Message);

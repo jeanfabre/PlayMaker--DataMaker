@@ -1,8 +1,5 @@
-//	(c) Jean Fabre, 2011-2012 All rights reserved.
+//	(c) Jean Fabre, 2011-2013 All rights reserved.
 //	http://www.fabrejean.net
-// 
-// Version Alpha 0.92
-//
 
 //using UnityEditor;
 using UnityEngine;
@@ -12,12 +9,7 @@ using System.Collections.Generic;
 
 public abstract class PlayMakerCollectionProxy : MonoBehaviour {
 	
-	/*
-	[MenuItem ("PlayMaker/Addon/Collections/About Collections")]
-    static void about () {
-		//TODO
-    }
-	*/
+
 	
 	public enum VariableEnum{ // WARNING: DO NOT INSERT ITEM: IT CORRUPTS EXISTING PROXIES SELECTION
 		GameObject,
@@ -31,7 +23,8 @@ public abstract class PlayMakerCollectionProxy : MonoBehaviour {
 		Color,
 		Material,
 		Texture,
-		Vector2
+		Vector2,
+		AudioClip
 	}
 		
 	//- EDITING STUFF
@@ -82,7 +75,7 @@ public abstract class PlayMakerCollectionProxy : MonoBehaviour {
 	public List<Texture2D> preFillTextureList = new List<Texture2D>();
 	public List<Vector2> preFillVector2List = new List<Vector2>();
 	public List<Vector3> preFillVector3List = new List<Vector3>();
-	
+	public List<AudioClip> preFillAudioClipList = new List<AudioClip>();
 	
 	internal string getFsmVariableType(VariableType _type)
 	{
@@ -161,7 +154,13 @@ public abstract class PlayMakerCollectionProxy : MonoBehaviour {
 		// commit into play or something. Maybe there is a better method then OnEnable for this.
 		// it keeps also track of any types list.
 
+		//Debug.Log("cleanPrefilledLists",this);
+		//Debug.Log(preFillGameObjectList.Count+"--"+preFillCount);
 		
+		
+		if (preFillKeyList.Count>preFillCount){
+			preFillKeyList.RemoveRange(preFillCount,(preFillKeyList.Count-preFillCount));
+		}
 		if (preFillBoolList.Count>preFillCount){
 			preFillBoolList.RemoveRange(preFillCount,(preFillBoolList.Count-preFillCount));
 		}
@@ -176,7 +175,10 @@ public abstract class PlayMakerCollectionProxy : MonoBehaviour {
 		}		
 		if (preFillMaterialList.Count>preFillCount){
 			preFillMaterialList.RemoveRange(preFillCount,(preFillMaterialList.Count-preFillCount));
-		}		
+		}
+		if (preFillGameObjectList.Count>preFillCount){
+			preFillGameObjectList.RemoveRange(preFillCount,(preFillGameObjectList.Count-preFillCount));
+		}
 		if (preFillObjectList.Count>preFillCount){
 			preFillObjectList.RemoveRange(preFillCount,(preFillObjectList.Count-preFillCount));
 		}
@@ -197,6 +199,9 @@ public abstract class PlayMakerCollectionProxy : MonoBehaviour {
 		}
 		if (preFillVector3List.Count>preFillCount){
 			preFillVector3List.RemoveRange(preFillCount,(preFillVector3List.Count-preFillCount));	
+		}
+		if (preFillAudioClipList.Count>preFillCount){
+			preFillAudioClipList.RemoveRange(preFillCount,(preFillAudioClipList.Count-preFillCount));	
 		}
 		
 	}// cleanPrefilledLists

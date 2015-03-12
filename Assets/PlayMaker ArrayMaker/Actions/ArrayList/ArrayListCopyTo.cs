@@ -1,8 +1,5 @@
 //	(c) Jean Fabre, 2011-2013 All rights reserved.
 //	http://www.fabrejean.net
-//  contact: http://www.fabrejean.net/contact.htm
-//
-// Version Alpha 0.92
 
 // INSTRUCTIONS
 // Drop a PlayMakerArrayList script onto a GameObject, and define a unique name for reference if several PlayMakerArrayList coexists on that GameObject.
@@ -52,8 +49,8 @@ namespace HutongGames.PlayMaker.Actions
 			gameObjectTarget = null;
 			referenceTarget = null;
 			
-			startIndex = null;
-			count = null;
+			startIndex = new FsmInt() {UseVariable=true};
+			count = new FsmInt() {UseVariable=true};
 		}
 
 		

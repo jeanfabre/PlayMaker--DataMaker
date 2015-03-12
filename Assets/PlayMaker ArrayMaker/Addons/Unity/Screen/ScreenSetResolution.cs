@@ -1,4 +1,5 @@
-// (c) Copyright HutongGames, LLC 2010-2013. All rights reserved.
+//	(c) Jean Fabre, 2011-2013 All rights reserved.
+//	http://www.fabrejean.net
 
 using UnityEngine;
 

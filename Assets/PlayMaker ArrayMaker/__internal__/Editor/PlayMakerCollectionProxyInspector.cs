@@ -1,8 +1,5 @@
-//	(c) Jean Fabre, 2011-2012 All rights reserved.
+//	(c) Jean Fabre, 2011-2013 All rights reserved.
 //	http://www.fabrejean.net
-//
-// Version Alpha 0.92
-//
 
 using UnityEditor;
 using UnityEngine;
@@ -57,25 +54,25 @@ public class PlayMakerCollectionProxyInspector : Editor {
 			if (duplicatedKey)
 			{
 				duplicatedKey = false;
-				//GUI.color = Color.red;
-			//	EditorGUILayout.BeginHorizontal();
-								
-			//	EditorGUILayout.SelectableLabel("WARNING: Duplicates key. please remove.",EditorStyles.whiteBoldLabel);
-			//	EditorGUILayout.EndHorizontal();
-			//	GUI.color = Color.white;
 			}
+		
 		proxy.showContent = EditorGUILayout.Foldout(proxy.showContent, new GUIContent("PreFilled data : "+preFillSuffix , "Author time content definition"));
 
-			GUI.contentColor = Color.white;
+		GUI.contentColor = Color.white;
 		
 		if (proxy.showContent){
 
 			EditorGUI.indentLevel = 1;
 			
-			
-			
 			proxy.preFillType =  (PlayMakerHashTableProxy.VariableEnum)EditorGUILayout.EnumPopup("Prefill type", proxy.preFillType);               
-			proxy.preFillCount = Mathf.Max(0,EditorGUILayout.IntField("Prefill count",proxy.preFillCount));
+			int newPrefillCount  = Mathf.Max(0,EditorGUILayout.IntField("Prefill count",proxy.preFillCount));
+			if (proxy.preFillCount != newPrefillCount)
+			{
+				//Debug.Log("new prefill count");
+				proxy.preFillCount = newPrefillCount;
+			 	proxy.cleanPrefilledLists();
+			}
+			
 			if (withKeys){
 				proxy.condensedView  = (bool)EditorGUILayout.Toggle("Condensed view", proxy.condensedView);	
 			}
@@ -334,12 +331,25 @@ public class PlayMakerCollectionProxyInspector : Editor {
 							}
 							EditorGUILayout.BeginHorizontal();
 							buildItemSelector(i);
+					
+					
 							if( proxy.condensedView && withKeys){
 								
-									buildKeyField(proxy,i);
-									if (proxy.TextureElementSmall){EditorGUIUtility.LookLikeInspector();}
-									proxy.preFillTextureList[i]= (Texture2D)EditorGUILayout.ObjectField(proxy.preFillTextureList[i],typeof(Texture2D),false);
-									if (proxy.TextureElementSmall){EditorGUIUtility.LookLikeControls();}
+								buildKeyField(proxy,i);
+								if (proxy.TextureElementSmall){
+									GUILayout.BeginHorizontal();
+										GUILayout.Label(proxy.preFillTextureList[i]);
+										
+										proxy.preFillTextureList[i]= (Texture2D)EditorGUILayout.ObjectField(proxy.preFillTextureList[i],typeof(Texture2D),false);
+									GUILayout.EndHorizontal();
+									
+								}else{
+								
+									GUILayout.FlexibleSpace();
+									proxy.preFillTextureList[i]= (Texture2D)EditorGUILayout.ObjectField("", proxy.preFillTextureList[i],typeof(Texture2D),false);
+									GUILayout.Space(5);
+								
+								}
 								
 							}else{
 								if (withKeys) {
@@ -347,14 +357,38 @@ public class PlayMakerCollectionProxyInspector : Editor {
 									EditorGUILayout.EndHorizontal();
 									EditorGUILayout.BeginHorizontal();
 								}
-								if (proxy.TextureElementSmall){EditorGUIUtility.LookLikeInspector();}
-									proxy.preFillTextureList[i]= (Texture2D)EditorGUILayout.ObjectField("Item "+i, proxy.preFillTextureList[i],typeof(Texture2D),false);
-								if (proxy.TextureElementSmall){EditorGUIUtility.LookLikeControls();}
+
+								
+									GUILayout.BeginHorizontal();
+						
+										if (!withKeys)
+										{
+											GUILayout.Space(15);
+											GUILayout.Label("item "+i);	
+										}
+										
+										if (proxy.TextureElementSmall){
+											
+										if (withKeys)
+										{
+											EditorGUILayout.LabelField("");	
+										}
+											proxy.preFillTextureList[i]= (Texture2D)EditorGUILayout.ObjectField(proxy.preFillTextureList[i],typeof(Texture2D),false);
+											
+										}else{
+											GUILayout.FlexibleSpace();
+											proxy.preFillTextureList[i]= (Texture2D)EditorGUILayout.ObjectField("",proxy.preFillTextureList[i],typeof(Texture2D),false);
+											GUILayout.Space(5);
+										}
+								
+									GUILayout.EndHorizontal();
+
 							}
+
 							EditorGUILayout.EndHorizontal();
 						}
 						break;
-				/*
+				
 					case (PlayMakerCollectionProxy.VariableEnum.Vector2):
 						for(int i=0;i<proxy.preFillCount;i++){
 							if (proxy.preFillVector2List.Count<(i+1)){
@@ -385,7 +419,7 @@ public class PlayMakerCollectionProxyInspector : Editor {
 							EditorGUILayout.EndHorizontal();
 						}
 						break;
-				*/
+				
 					case (PlayMakerCollectionProxy.VariableEnum.Vector3):
 						for(int i=0;i<proxy.preFillCount;i++){
 							if (proxy.preFillVector3List.Count<(i+1)){
@@ -414,6 +448,35 @@ public class PlayMakerCollectionProxyInspector : Editor {
 								}
 						
 								proxy.preFillVector3List[i]= EditorGUILayout.Vector3Field("Item "+i, proxy.preFillVector3List[i]);
+							}
+							EditorGUILayout.EndHorizontal();
+						}
+						break;
+				
+				
+				case (PlayMakerCollectionProxy.VariableEnum.AudioClip):
+						
+						for(int i=0;i<proxy.preFillCount;i++){
+							if (proxy.preFillAudioClipList.Count<(i+1)){
+								proxy.preFillAudioClipList.Add(null);
+							}
+							EditorGUILayout.BeginHorizontal();
+							buildItemSelector(i);
+							if( proxy.condensedView && withKeys){
+								
+									buildKeyField(proxy,i);
+									
+									proxy.preFillAudioClipList[i]= (AudioClip)EditorGUILayout.ObjectField(proxy.preFillAudioClipList[i],typeof(AudioClip),false);
+									
+								
+							}else{
+								if (withKeys) {
+									buildKeyField(proxy,i);
+									EditorGUILayout.EndHorizontal();
+									EditorGUILayout.BeginHorizontal();
+								}
+								proxy.preFillAudioClipList[i]= (AudioClip)EditorGUILayout.ObjectField("Item "+i, proxy.preFillAudioClipList[i],typeof(AudioClip),false);
+								
 							}
 							EditorGUILayout.EndHorizontal();
 						}

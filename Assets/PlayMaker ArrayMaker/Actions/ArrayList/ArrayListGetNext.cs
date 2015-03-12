@@ -1,8 +1,5 @@
 //	(c) Jean Fabre, 2011-2013 All rights reserved.
 //	http://www.fabrejean.net
-//  contact: http://www.fabrejean.net/contact.htm
-//
-// Version Alpha 0.92
 
 // INSTRUCTIONS
 // Drop a PlayMakerArrayList script onto a GameObject, and define a unique name for reference if several PlayMakerArrayList coexists on that GameObject.
@@ -28,6 +25,11 @@ namespace HutongGames.PlayMaker.Actions
 		
 		[Tooltip("Author defined Reference of the PlayMaker ArrayList Proxy component ( necessary if several component coexists on the same GameObject")]
 		public FsmString reference;
+		
+		[Tooltip("Set to true to force iterating from the first item. This variable will be set to false as it carries on iterating, force it back to true if you want to renter this action back to the first item.")]
+		[UIHint(UIHint.Variable)]
+		public FsmBool reset;
+		
 	
 		[Tooltip("From where to start iteration, leave to 0 to start from the beginning")]
 		public FsmInt startIndex;
@@ -49,6 +51,11 @@ namespace HutongGames.PlayMaker.Actions
 		[ActionSection("Result")]
 		
 		[UIHint(UIHint.Variable)]
+		[Tooltip("The current index.")]
+		public FsmInt currentIndex;
+		
+		[UIHint(UIHint.Variable)]
+		[Tooltip("The value for the current index.")]
 		public FsmVar result;
 		
 		
@@ -65,19 +72,27 @@ namespace HutongGames.PlayMaker.Actions
 			startIndex = null;
 			endIndex = null;
 			
+			reset = null;
+			
 			loopEvent = null;
 			finishedEvent = null;
 	
 			failureEvent = null;
 			
 			result = null;
+			currentIndex = null;
 			
 		}
 		
 		
 		public override void OnEnter()
 		{
-			
+			if (reset.Value)
+			{
+				reset.Value =  false;
+				nextItemIndex = 0;
+			}
+				
 			if (nextItemIndex == 0)
 			{
 				if ( ! SetUpArrayListProxyPointer(Fsm.GetOwnerDefaultTarget(gameObject),reference.Value) )
@@ -152,6 +167,8 @@ namespace HutongGames.PlayMaker.Actions
 		
 	
 			object element = null;
+			
+			currentIndex.Value = nextItemIndex;
 			
 			try{
 				element = proxy.arrayList[nextItemIndex];

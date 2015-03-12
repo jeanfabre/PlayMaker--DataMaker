@@ -1,8 +1,5 @@
 //	(c) Jean Fabre, 2011-2013 All rights reserved.
 //	http://www.fabrejean.net
-//  contact: http://www.fabrejean.net/contact.htm
-//
-// Version Alpha 0.92
 
 // INSTRUCTIONS
 // Drop a PlayMakerArrayList script onto a GameObject, and define a unique name for reference if several PlayMakerArrayList coexists on that GameObject.
@@ -30,7 +27,12 @@ namespace HutongGames.PlayMaker.Actions
 
 		[Tooltip("Author defined Reference of the PlayMaker HashTable Proxy component ( necessary if several component coexists on the same GameObject")]
 		public FsmString reference;
-	
+
+			
+		[Tooltip("Set to true to force iterating from the first item. This variable will be set to false as it carries on iterating, force it back to true if you want to renter this action back to the first item.")]
+		[UIHint(UIHint.Variable)]
+		public FsmBool reset;
+		
 		[Tooltip("From where to start iteration, leave to 0 to start from the beginning")]
 		public FsmInt startIndex;
 		
@@ -68,6 +70,9 @@ namespace HutongGames.PlayMaker.Actions
 		
 			gameObject = null;
 			reference = null;
+			
+			reset = null;
+			
 			startIndex = null;
 			endIndex = null;
 			
@@ -83,6 +88,11 @@ namespace HutongGames.PlayMaker.Actions
 		
 		public override void OnEnter()
 		{
+			if (reset.Value)
+			{
+				reset.Value =  false;
+				nextItemIndex = 0;
+			}
 			
 			if (nextItemIndex == 0)
 			{

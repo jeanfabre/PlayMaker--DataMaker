@@ -1,34 +1,8 @@
-(c) Jean Fabre, 2011-2013 All rights reserved.
+(c) Jean Fabre, 2011-2015 All rights reserved.
 This package is released under LGPL license: http://opensource.org/licenses/LGPL-3.0.
+This content is released under the (http://opensource.org/licenses/MIT) MIT License.
 http://www.fabrejean.net
 contact: http://www.fabrejean.net/contact.htm
-
-ArrayMaker Addon for PlayMaker. Version Alpha 0.92
-
-changes from 0.91
--- Using now utomate to automate packaging
--- Packages now separated, just the framework, with samples and addons
--- Added addons for EasySave serialization
--- Added proper support for Vector2 in arrayList and HashTable inspector
--- fixed null values disply in inspector for arrayList nad HashTable.
-
-changes from 0.9
- WARNING: NOT COMPATIBLE WITH PREVIOUS VERSIONS: many actions public interface changed, so you will need to re-assign setters and getters on all of them.
- This version is a huge improvment in terms of ease of use, with now much more comprehensive and logical actions interfaces, no more lenghtly actions for nothing, 
- the latest playmaker version features a new FsmVar class that let the user select first the variable type, and then select it or feed some values, 
- I don't have to expose ALL possibilities anymore which was confusing, prone to error and frustrations and totally messy.
- 
-changes from 0.7
- WARNING: previous version had a different file organisation, so now it sits in its own folder and not within "PlayMaker" which was a mistake, 
- I assumed actions would only be detected if within the Actions folder...
--- goes to 0.9 because I can :) well I had a 0.8 version sort of, but so much went that I moved to 0.9
--- new actions
--- incorporate fixes for Texture and proceduralMaterial assignment
--- fixed prefab instance editing not serializing properly
--- fixed ArrayListCopyTo action
-
-changes from 0.6
--- now using gamObject for reference instead of the component itself via fsmObject, since this doesn't bring any advantages ( as we still need a string reference...)
 
 
 DESCRIPTION:

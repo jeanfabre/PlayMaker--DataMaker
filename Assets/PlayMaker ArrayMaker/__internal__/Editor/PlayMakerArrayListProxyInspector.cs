@@ -1,8 +1,5 @@
-//	(c) Jean Fabre, 2011-2012 All rights reserved.
+//	(c) Jean Fabre, 2011-2013 All rights reserved.
 //	http://www.fabrejean.net
-// 
-// Version Alpha 0.92
-//
 
 
 using UnityEditor;
@@ -17,11 +14,10 @@ public class PlayMakerArrayListProxyInspector : PlayMakerCollectionProxyInspecto
 {
 	
 	// let the user easily add a arrayList without having to know where it is located in the assets
-    [MenuItem ("PlayMaker Add ons/ArrayMaker/Add ArrayList Proxy to selected Objects")]
+    [MenuItem ("PlayMaker/Addons/ArrayMaker/Add ArrayList Proxy to selected Objects")]
     static void AddPlayMakerArrayListProxyComponent () {
-			 foreach (Transform transform in Selection.transforms) {
-                Undo.RegisterUndo(Selection.transforms,"PlayMakerArrayListProxy Additions");	
-                transform.gameObject.AddComponent("PlayMakerArrayListProxy");
+			 foreach (GameObject go in Selection.gameObjects) {
+                go.AddComponent("PlayMakerArrayListProxy");
             }
     }
 
@@ -149,13 +145,27 @@ public class PlayMakerArrayListProxyInspector : PlayMakerCollectionProxyInspecto
 							proxy.arrayList[i]= (string)EditorGUILayout.TextField(label, (string)proxy.arrayList[i]);
 					}else if (proxy.arrayList[i].GetType() == typeof(Texture2D)) {
 						
-						if (proxy.TextureElementSmall){EditorGUIUtility.LookLikeInspector();}
-						proxy.arrayList[i]= (Texture2D)EditorGUILayout.ObjectField(label,(Texture2D)proxy.arrayList[i],typeof(Texture2D),false);
-						if (proxy.TextureElementSmall){EditorGUIUtility.LookLikeControls();}
+						GUILayout.BeginHorizontal();
+						GUILayout.Space(15);
+							GUILayout.Label(label);
+							GUILayout.FlexibleSpace();
+							if (proxy.TextureElementSmall)
+							{
+								proxy.arrayList[i]= (Texture2D)EditorGUILayout.ObjectField((Texture2D)proxy.arrayList[i],typeof(Texture2D),false);
+							}else{
+								proxy.arrayList[i]= (Texture2D)EditorGUILayout.ObjectField("",(Texture2D)proxy.arrayList[i],typeof(Texture2D),false);
+							}
+							GUILayout.Space(5);
+						GUILayout.EndHorizontal();
+
+						
+						
 					}else if (proxy.arrayList[i].GetType() == typeof(Vector2)) {
 						proxy.arrayList[i]= (Vector2)EditorGUILayout.Vector2Field(label, (Vector2)proxy.arrayList[i]);
 					}else if (proxy.arrayList[i].GetType() == typeof(Vector3)) {
 						proxy.arrayList[i]= (Vector3)EditorGUILayout.Vector3Field(label, (Vector3)proxy.arrayList[i]);
+					}else if (proxy.arrayList[i].GetType() == typeof(AudioClip)) {
+							proxy.arrayList[i]= (AudioClip)EditorGUILayout.ObjectField(label, (AudioClip)proxy.arrayList[i],typeof(AudioClip),true);
 					}else{
 						//(FsmBool)proxy.arrayList[i].Value = (bool)EditorGUILayout.Toggle(label, (FsmBool)proxy.arrayList[i].Value);	
 						// OUPS

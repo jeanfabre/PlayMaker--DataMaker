@@ -1,8 +1,5 @@
 //	(c) Jean Fabre, 2011-2013 All rights reserved.
 //	http://www.fabrejean.net
-//  contact: http://www.fabrejean.net/contact.htm
-//
-// Version Alpha 0.92
 
 // INSTRUCTIONS
 // Drop a PlayMakerArrayList script onto a GameObject, and define a unique name for reference if several PlayMakerArrayList coexists on that GameObject.
@@ -96,23 +93,23 @@ namespace HutongGames.PlayMaker.Actions
 			int indexOfResult = -1;
 			
 			try{
-				if (startIndex == null){
-					
-					indexOfResult = proxy.arrayList.IndexOf(item);
+				if (startIndex.IsNone){
+					UnityEngine.Debug.Log("hello");
+					indexOfResult = PlayMakerUtils_Extensions.IndexOf(proxy.arrayList,item);
 		
-				}else if (count==null || count.Value == 0 ){
+				}else if (count.IsNone || count.Value == 0 ){
 					if (startIndex.Value<0 || startIndex.Value>=proxy.arrayList.Count){
 						LogError("start index out of range");
 						return;
 					}
-						indexOfResult = proxy.arrayList.IndexOf(item,startIndex.Value);
+						indexOfResult = PlayMakerUtils_Extensions.IndexOf(proxy.arrayList,item);
 					
 				}else{
 					if (startIndex.Value<0 || startIndex.Value>=(proxy.arrayList.Count-count.Value)){
 						LogError("start index and count out of range");
 						return;
 					}
-					indexOfResult = proxy.arrayList.IndexOf(item,startIndex.Value,count.Value);
+					indexOfResult = PlayMakerUtils_Extensions.IndexOf(proxy.arrayList,item);
 				}
 			}catch(System.Exception e){
 				Debug.LogError(e.Message);
