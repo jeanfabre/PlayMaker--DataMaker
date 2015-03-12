@@ -17,6 +17,7 @@ public class DataMakerXmlProxy : DataMakerProxyBase {
 	static public bool delegationActive = true;
 	
 	public bool useSource;
+
 	public TextAsset XmlTextAsset;
 	
 	private XmlNode _xmlNode;
