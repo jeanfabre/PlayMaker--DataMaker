@@ -3,6 +3,7 @@
 // © 2012 Jean Fabre http://www.fabrejean.net
 //
 //
+using System;
 using UnityEngine;
 using System.Collections;
 
@@ -17,11 +18,22 @@ public class DataMakerXmlProxy : DataMakerProxyBase {
 	
 	public bool useSource;
 	public TextAsset XmlTextAsset;
-		
-	[HideInInspector]
-	public XmlNode xmlNode;
+	
+	private XmlNode _xmlNode;
 	
 	[HideInInspector]
+	public XmlNode xmlNode
+	{
+		get{
+			return _xmlNode;
+		}
+		set{
+			_xmlNode = value;
+		}
+	}
+	
+	[HideInInspector]
+	[NonSerialized]
 	public string content;
 	
 	public PlayMakerFSM FsmEventTarget;
@@ -32,15 +44,23 @@ public class DataMakerXmlProxy : DataMakerProxyBase {
 		if (useSource && XmlTextAsset!=null)
 		{
 			InjectXmlString(XmlTextAsset.text);
+			
+			if (!string.IsNullOrEmpty(this.referenceName))
+			{
+				Debug.Log("XmlStoreNode in "+this.referenceName);
+				DataMakerXmlUtils.XmlStoreNode(xmlNode,this.referenceName);
+			}
+			
 		}
 		
 		RegisterEventHandlers();
-
+		
 	}
 	
-	void RefreshContent()
+	public void RefreshContent()
 	{
 		content = DataMakerXmlUtils.XmlNodeToString(xmlNode);
+		//Debug.Log(content);
 	}
 	
 	public void InjectXmlNode(XmlNode node)
@@ -53,13 +73,13 @@ public class DataMakerXmlProxy : DataMakerProxyBase {
 	
 	public void InjectXmlNodeList(XmlNodeList nodeList)
 	{
-		 XmlDocument doc = new XmlDocument();
-    	xmlNode =  doc.CreateElement("root");
+		XmlDocument doc = new XmlDocument();
+		xmlNode =  doc.CreateElement("root");
 		foreach(XmlNode _node in nodeList)
 		{
 			xmlNode.AppendChild(_node);
 		}
-	
+		
 		RegisterEventHandlers();
 		
 		Debug.Log(DataMakerXmlUtils.XmlNodeToString(xmlNode));
@@ -87,22 +107,16 @@ public class DataMakerXmlProxy : DataMakerProxyBase {
 	{
 		if (xmlNode!=null)
 		{
-			if (xmlNode.OwnerDocument==null)
-			{
-				Debug.LogWarning("Missing OwnerDocument for xmlnode: "+xmlNode.Name);
-				return;
-			}
-
 			xmlNode.OwnerDocument.NodeChanged += new XmlNodeChangedEventHandler(NodeTouchedHandler);
 			xmlNode.OwnerDocument.NodeInserted += new XmlNodeChangedEventHandler(NodeTouchedHandler);
 			xmlNode.OwnerDocument.NodeRemoved += new XmlNodeChangedEventHandler(NodeTouchedHandler);
 		}
 	}
 	
-	 //Define the event handler.
-	 void NodeTouchedHandler(object src, XmlNodeChangedEventArgs args)
-	 {
-	  	Debug.Log("Node " + args.Node.Name + " action:"+args.Action);
+	//Define the event handler.
+	void NodeTouchedHandler(object src, XmlNodeChangedEventArgs args)
+	{
+		Debug.Log("Node " + args.Node.Name + " action:"+args.Action);
 		
 		if (FsmEventTarget==null || ! delegationActive)
 		{

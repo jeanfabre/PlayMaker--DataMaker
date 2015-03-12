@@ -32,7 +32,7 @@ public class DataMakerEditorGUILayoutUtils {
 	{
 		scroll = GUILayout.BeginScrollView(scroll,"box", GUILayout.Height (200));
 		GUI.skin.box.alignment = TextAnchor.UpperLeft;
-		GUILayout.Box(content,"",null);
+		GUILayout.Box(content,"label",null);
 		GUILayout.EndScrollView();
 		
 		return scroll;
