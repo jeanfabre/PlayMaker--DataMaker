@@ -1,0 +1,114 @@
+<response> 
+  <version>0.1</version>  
+  <termsofService>...</termsofService>  
+  <features>...</features>  
+  <current_observation> 
+    <image> 
+      <url>http://icons.wxug.com/graphics/wu2/logo_130x80.png</url>  
+      <title>Weather Underground</title>  
+      <link>http://www.wunderground.com</link> 
+    </image>  
+    <display_location> 
+      <full>Portland, OR</full>  
+      <city>Portland</city>  
+      <state>OR</state>  
+      <state_name>Oregon</state_name>  
+      <country>US</country>  
+      <country_iso3166>US</country_iso3166>  
+      <zip>97214</zip>  
+      <magic>1</magic>  
+      <wmo>99999</wmo>  
+      <latitude>45.51449966</latitude>  
+      <longitude>-122.64265442</longitude>  
+      <elevation>42.00000000</elevation> 
+    </display_location>  
+    <observation_location> 
+      <full>Richmond / Stripling Weather Network, Portland, Oregon</full>  
+      <city>Richmond / Stripling Weather Network, Portland</city>  
+      <state>Oregon</state>  
+      <country>US</country>  
+      <country_iso3166>US</country_iso3166>  
+      <latitude>45.505299</latitude>  
+      <longitude>-122.635262</longitude>  
+      <elevation>164 ft</elevation> 
+    </observation_location>  
+    <estimated/>  
+    <station_id>KORPORTL230</station_id>  
+    <observation_time>Last Updated on December 14, 6:48 PM PST</observation_time>  
+    <observation_time_rfc822>Sun, 14 Dec 2014 18:48:13 -0800</observation_time_rfc822>  
+    <observation_epoch>1418611693</observation_epoch>  
+    <local_time_rfc822>Sun, 14 Dec 2014 18:50:01 -0800</local_time_rfc822>  
+    <local_epoch>1418611801</local_epoch>  
+    <local_tz_short>PST</local_tz_short>  
+    <local_tz_long>America/Los_Angeles</local_tz_long>  
+    <local_tz_offset>-0800</local_tz_offset>  
+    <weather>Clear</weather>  
+    <temperature_string>43.7 F (6.5 C)</temperature_string>  
+    <temp_f>43.7</temp_f>  
+    <temp_c>6.5</temp_c>  
+    <relative_humidity>71%</relative_humidity>  
+    <wind_string>From the South at 2.7 MPH</wind_string>  
+    <wind_dir>South</wind_dir>  
+    <wind_degrees>180</wind_degrees>  
+    <wind_mph>2.7</wind_mph>  
+    <wind_gust_mph>0</wind_gust_mph>  
+    <wind_kph>4.3</wind_kph>  
+    <wind_gust_kph>0</wind_gust_kph>  
+    <pressure_mb>1015</pressure_mb>  
+    <pressure_in>29.96</pressure_in>  
+    <pressure_trend>-</pressure_trend>  
+    <dewpoint_string>35 F (2 C)</dewpoint_string>  
+    <dewpoint_f>35</dewpoint_f>  
+    <dewpoint_c>2</dewpoint_c>  
+    <heat_index_string>NA</heat_index_string>  
+    <heat_index_f>NA</heat_index_f>  
+    <heat_index_c>NA</heat_index_c>  
+    <windchill_string>44 F (7 C)</windchill_string>  
+    <windchill_f>44</windchill_f>  
+    <windchill_c>7</windchill_c>  
+    <feelslike_string>44 F (7 C)</feelslike_string>  
+    <feelslike_f>44</feelslike_f>  
+    <feelslike_c>7</feelslike_c>  
+    <visibility_mi>10.0</visibility_mi>  
+    <visibility_km>16.1</visibility_km>  
+    <solarradiation/>  
+    <UV>0</UV>  
+    <precip_1hr_string>-999.00 in ( 0 mm)</precip_1hr_string>  
+    <precip_1hr_in>-999.00</precip_1hr_in>  
+    <precip_1hr_metric>0</precip_1hr_metric>  
+    <precip_today_string>0.00 in (0 mm)</precip_today_string>  
+    <precip_today_in>0.00</precip_today_in>  
+    <precip_today_metric>0</precip_today_metric>  
+    <icon>clear</icon>  
+    <icon_url>http://icons.wxug.com/i/c/k/nt_clear.gif</icon_url>  
+    <forecast_url>http://www.wunderground.com/US/OR/Portland.html</forecast_url>  
+    <history_url>http://www.wunderground.com/weatherstation/WXDailyHistory.asp?ID=KORPORTL230</history_url>  
+    <ob_url>http://www.wunderground.com/cgi-bin/findweather/getForecast?query=45.505299,-122.635262</ob_url> 
+  </current_observation>  
+  <moon_phase> 
+    <percentIlluminated>44</percentIlluminated>  
+    <ageOfMoon>23</ageOfMoon>  
+    <current_time> 
+      <hour>18</hour>  
+      <minute>50</minute> 
+    </current_time>  
+    <sunset> 
+      <hour>16</hour>  
+      <minute>27</minute> 
+    </sunset>  
+    <sunrise> 
+      <hour>7</hour>  
+      <minute>43</minute> 
+    </sunrise> 
+  </moon_phase>  
+  <sun_phase> 
+    <sunset> 
+      <hour>16</hour>  
+      <minute>27</minute> 
+    </sunset>  
+    <sunrise> 
+      <hour>7</hour>  
+      <minute>43</minute> 
+    </sunrise> 
+  </sun_phase> 
+</response>

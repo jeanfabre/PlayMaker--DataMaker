@@ -1,0 +1,26 @@
+<div id="actionImg"><p><img src="XmlSaveInProxy.png" title="" /></p></div>
+<div id="actionDesc">
+<p>
+Save an xml string into a DataMaker Xml Proxy</p>
+</div>
+<div id="paramRow">
+	<div id="paramName">
+Xml Source</div>
+	<div id="paramDesc">
+The xml source</div>
+</div>
+
+<div id="paramRow">
+	<div id="paramName">
+Game Object</div>
+	<div id="paramDesc">
+The gameObject with the DataMaker Xml Proxy component</div>
+</div>
+
+<div id="paramRow">
+	<div id="paramName">
+Reference</div>
+	<div id="paramDesc">
+Author defined Reference of the DataMaker Xml Proxy component ( necessary if several component coexists on the same GameObject</div>
+</div>
+

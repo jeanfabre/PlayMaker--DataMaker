@@ -1,0 +1,201 @@
+<?xml version="1.0"?>
+<rss version="0.92">
+	<channel>
+		<title>PlayMaker Ecosystem</title>
+		<link>http://hutonggames.com/</link>
+		<description>All informations and news related to PlayMaker</description>
+		<language>en-us</language>
+		<copyright><![CDATA[ © Copyright HutongGames, LLC 2010-2014. All rights reserved. ]]></copyright>
+		<lastBuildDate>Thu, 29 May 2014 09:47:00 +0400</lastBuildDate>
+
+		
+		<item>
+			<title>Micro Sample using Translate action given a total travel and duration</title>
+			<link>https://github.com/jeanfabre/PlayMakerCustomActions_U3/raw/master/PlayMaker/Ecosystem/Custom%20Samples/Transform/TranslateUsingTimeAndDistance.unitypackage</link>
+			<pubDate>Thu, 29 May 2014 09:47:00 +0400</pubDate>
+			<guid isPermaLink="false">TranslateUsingTimeAndDistance sample 1</guid>
+			<author>jean@hutonggames.com (Jean Fabre)</author>
+			<category>Samples</category>
+			<description><![CDATA[
+			Micro Sample showing a simple trick to translate an object given a total travel and duration. Using proper tweening engines is recommanded here. This is more an exercice to control timing, and delta movements.
+			]]></description>
+		</item>
+		
+		
+		<item>
+			<title>New actions on the Ecosystem</title>
+			<link>https://hutonggames.fogbugz.com/default.asp?W1181</link>
+			<pubDate>Tue, 27 May 2014 14:45:00 +0400</pubDate>
+			<guid isPermaLink="false">W1181 2</guid>
+			<author>jean@hutonggames.com (Jean Fabre)</author>
+			<category>Ecosystem</category>
+			<description><![CDATA[
+			Dozens of new actions available on the ecosystem.178 actions are available now. More will be added, as I go through the forum section for custom actions I haven't yet logged.</br>Note: If your search field is empty, it will only return the first few actions find. Don't forget to refine your search using keywords such as "vector2" or "Quaternion", "color" etc to get to the potential custom actions you need.
+			]]></description>
+		</item>
+		
+		<item>
+			<title>ArrayMaker update</title>
+			<link>https://hutonggames.fogbugz.com/default.asp?W715</link>
+			<pubDate>Fri, 23 May 2014 15:32:00 +0400</pubDate>
+			<guid isPermaLink="false">W715 1</guid>
+			<author>jean@hutonggames.com (Jean Fabre)</author>
+			<category>Addons</category>
+			<description><![CDATA[
+			New update for ArrayMaker, adding lots of stuff:</br>
+-- added reset to iterative actions to make sure we have a way to force iterating back from the the first item if we exited the loop early.</br>
+-- added currentIndex in iterative actions to know where we are, not just to get the value itself.</br>
+-- added ArrayListIsEmpty and HashTableIsEmpty action</br>
+-- added ArrayListGetFarthestGameObjectInSight</br>
+-- added HashtableEditKey action</br>
+-- remove obsolete warnings on U4</br>
+-- added arrayList min max and average values custom actions to start some statistic around content.</br>
+			]]></description>
+		</item>
+		
+		<item>
+			<title>Unity PathFinding package for Unity 3.x users</title>
+			<link>https://hutonggames.fogbugz.com/default.asp?W1174</link>
+			<pubDate>Fri, 23 May 2014 09:08:00 +0400</pubDate>
+			<guid isPermaLink="false">W1174 1</guid>
+			<author>jean@hutonggames.com (Jean Fabre)</author>
+			<category>Addons</category>
+			<description><![CDATA[
+			You can find on the wiki page a new package for Unity NavMesh system. It's a sub set featuring only the actions supported in Unity 3.5. Unity 4 added new features like auto braking, and offset start end properties etc, so these actions are not there to avoid cluttering and creating errors if you are still working on old versions of Unity.
+			]]></description>
+		</item>
+		
+		<item>
+			<title>IOS Native Plugin</title>
+			<link>https://www.assetstore.unity3d.com/en/#!/content/7421</link>
+			<pubDate>Thu, 22 May 2014 12:12:00 +0400</pubDate>
+			<guid isPermaLink="false">as7421 1</guid>
+			<author>stans.assets@gmail.com (Stans)</author>
+			<category>Addons</category>
+			<description><![CDATA[
+			The latest version of this plugin features new PlayMaker Actions. This plugin provides the easy and flexible functionality of IOS native functions which are not natively available from Unity. Including Game Center, in-app purchases, & native alerts and events.
+			]]></description>
+		</item>
+		
+		<item>
+			<title>Ecosystem Browser : finally !</title>
+			<link>https://hutonggames.fogbugz.com/default.asp?W1181</link>
+			<pubDate>Thu, 22 May 2014 11:45:00 +0400</pubDate>
+			<guid isPermaLink="false">W1181 1</guid>
+			<author>jean@hutonggames.com (Jean Fabre)</author>
+			<category>Ecosystem</category>
+			<description><![CDATA[
+			Here we are with the first version of the ecosystem browser. Browser online custom actions, and install them into your project in just one click. The dowmload and installation is done automatically for you. No more dragging files around or copy pasting code. This tool was created to help you be more productive during your development, so don't hesitate to give feedback, this is important to create the ultimate PlayMaker ecosystem and get access to a huge database of content and materials with ease. Available content will be added regularly, and ultimatly cover all the custom actions currently within the PlayMaker forum and elsewhere.
+			]]></description>
+		</item>
+		
+		<item>
+			<title>Dialogue System v1.2.3 is out with PlayMaker Support</title>
+			<link>https://www.assetstore.unity3d.com/en/#!/content/11672</link>
+			<pubDate>Fri, 16 May 2014 14:55:00 +0400</pubDate>
+			<guid isPermaLink="false">as11672</guid>
+			<author>support@pixelcrushers.com (pixelcrushers)</author>
+			<category>Addons</category>
+			<description><![CDATA[
+			The Dialogue System for Unity v1.2.3 is now on the Asset Store. It includes PlayMaker support that makes it easy to drop interactive branching conversations, barks, and quests into your projects.
+			]]></description>
+		</item>
+		
+		
+		<item>
+			<title>Input.Touches new demo</title>
+			<link>https://hutonggames.fogbugz.com/default.asp?W961</link>
+			<pubDate>Wed, 14 May 2014 16:31:00 +0400</pubDate>
+			<guid isPermaLink="false">W961</guid>
+			<author>jean@hutonggames.com (Jean Fabre)</author>
+			<category>Addons</category>
+			<description><![CDATA[
+			Input.touches packaging has now its demos on a separate package. It features a new demo 'DragCameraWithLimits' to show how to take dragging information and move a camera smoothly and within defined limits.
+			]]></description>
+		</item>
+		
+		<item>
+			<title>NGUI 3.5.9 support</title>
+			<link>https://hutonggames.fogbugz.com/default.asp?W1111</link>
+			<pubDate>Wed, 14 May 2014 09:17:00 +0400</pubDate>
+			<guid isPermaLink="false">ngui 3.5.9</guid>
+			<author>jean@hutonggames.com (Jean Fabre)</author>
+			<category>Addons</category>
+			<description><![CDATA[
+			NGUI 3.5.9 now supported with the addition of a new global event NGUI / ON CHANGE to use in the component NGuiEventsToPlaymakerFsmEvents for UIInput and UIToggle changes. The PlayMaker demo scene 'Example 12 - Input Submit' implements this new event to show how it works.
+			]]></description>
+		</item>
+		
+		<item>
+			<title>Uniduino - arduino for Unity</title>
+			<link>http://www.uniduino.com/kb/playmaker/</link>
+			<pubDate>Mon, 12 May 2014 14:41:00 +0400</pubDate>
+			<guid>http://www.uniduino.com/kb/playmaker/</guid>
+			<author>support@uniduino.com (edwon)</author>
+			<category>Addons</category>
+			<description><![CDATA[
+			Uniduino supports PlayMaker with a set of customs actions. This feed item will link to the video tutorial showing how it all works!
+			]]></description>
+		</item>
+		
+		<item>
+			<title>GameAnalytics</title>
+			<link>https://hutonggames.fogbugz.com/default.asp?W1170</link>
+			<pubDate>Mon, 12 May 2014 14:30:00 +0400</pubDate>
+			<guid>https://hutonggames.fogbugz.com/default.asp?W1170</guid>
+			<author>jean@hutonggames.com (Jean Fabre)</author>
+			<category>Addons</category>
+			<description><![CDATA[
+			GameAnalytics service has updated its system with a tighter integration to PlayMaker, with automatic detection to toggle PlayMaker custom actions. It features the demo done 100% with PlayMaker as well, to help you get a grip on the ( very easy) use of its custom actions set. The custom actions and PlayMaker demo are fully documented on PlayMaker Wiki (this feed item will link you there).
+			]]></description>
+		</item>
+		
+		<item>
+			<title>GetNextRayCastAll Sample</title>
+			<link>https://github.com/jeanfabre/PlayMakerCustomActions_U3/raw/ac57f66621847427cdb93198a2b1206fb8e740f0/PlayMaker/Ecosystem/Custom%20Samples/Physics/GetNextRayCastAllHit.unitypackage</link>
+			<pubDate>Mon, 05 May 2014 18:02:00 GMT</pubDate>
+			<guid>https://github.com/jeanfabre/PlayMakerCustomActions_U3/raw/ac57f66621847427cdb93198a2b1206fb8e740f0/PlayMaker/Ecosystem/Custom%20Samples/Physics/GetNextRayCastAllHit.unitypackage</guid>
+			<author>jean@hutonggames.com (Jean Fabre)</author>
+			<category>Samples</category>
+			<description><![CDATA[
+			Micro Sample featuring the custom action "GetNextRayCastAll". It shows how to use this action, to loop throught results, filter them by tag, exit the loop early and process the objects being hit.
+			]]></description>
+		</item>
+		
+		<item>
+			<title>GetNextRayCastAll Custom Action</title>
+			<link>https://github.com/jeanfabre/PlayMakerCustomActions_U3/blob/ac57f66621847427cdb93198a2b1206fb8e740f0/Assets/PlayMaker%20Custom%20Actions/Physics/GetNextRayCastAllHit.cs</link>
+			<pubDate>Mon, 05 May 2014 17:55:00 GMT</pubDate>
+			<guid>https://github.com/jeanfabre/PlayMakerCustomActions_U3/blob/ac57f66621847427cdb93198a2b1206fb8e740f0/Assets/PlayMaker%20Custom%20Actions/Physics/GetNextRayCastAllHit.cs</guid>
+			<author>jean@hutonggames.com (Jean Fabre)</author>
+			<category>Custom Actions</category>
+			<description><![CDATA[
+			New take on the action you could find on the PlayMaker Forum. This time, the list of hits is ordered by distance, and you have an option to reset that action if you exit the loop before it reaches the end. Check out the related custom sample "GetNextRaycastAll" to see it in action.
+			]]></description>
+		</item>
+		
+		<item>
+			<title>Texture drawing and masking</title>
+			<link>https://github.com/jeanfabre/PlayMakerCustomActions_U3/raw/master/PlayMaker/Ecosystem/Custom%20Samples/Texture/MaskTextureDrawing.unitypackage</link>
+			<pubDate>Mon, 28 Apr 2014 22:39:00 GMT</pubDate>
+			<guid>https://github.com/jeanfabre/PlayMakerCustomActions_U3/raw/master/PlayMaker/Ecosystem/Custom%20Samples/Texture/MaskTextureDrawing.unitypackage</guid>
+			<author>jean@hutonggames.com (Jean Fabre)</author>
+			<category>Samples</category>
+			<description><![CDATA[
+			first Ecosystem Sample featuring the ability to draw circles on a texture, and a specific masking shader to cut out a texture using the alpha channel of another texture. Very useful for complex compositions.
+			]]></description>
+		</item>
+		
+		<item>
+			<title>Ngui 3.5.8 support</title>
+			<link>https://hutonggames.fogbugz.com/default.asp?W1111</link>
+			<pubDate>Fri, 25 Apr 2014 10:35:06 GMT</pubDate>
+			<guid>https://hutonggames.fogbugz.com/default.asp?W1111</guid>
+			<author>jean@hutonggames.com (Jean Fabre)</author>
+			<category>Addons</category>
+			<description><![CDATA[
+			NGUI 3.5.8 is now supported with the latest PlayMaker package available on the wiki.
+			]]></description>
+		</item>
+	</channel>
+</rss>

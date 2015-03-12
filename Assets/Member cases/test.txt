@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<root>
+<missionlist>
+
+<mission category="00">
+  <title lang="en">Mission 01: New Beginnings!</title>
+  <description>ARRRRR</description>
+  <reward>100</reward>
+  <level_0_minionsrequired>0</level_0_minionsrequired>
+  <level_1_minionsrequired>0</level_1_minionsrequired>
+  <level_2_minionsrequired>1</level_2_minionsrequired>
+  <level_3_minionsrequired>0</level_3_minionsrequired>
+</mission>
+
+<mission category="01">
+  <title lang="en">Mission 02: Time To Make A Name!</title>
+  <description>Test</description>
+  <reward>1000</reward>
+  <level_0_minionsrequired>0</level_0_minionsrequired>
+  <level_1_minionsrequired>0</level_1_minionsrequired>
+  <level_2_minionsrequired>1</level_2_minionsrequired>
+  <level_3_minionsrequired>0</level_3_minionsrequired>
+</mission>
+
+<mission category="02">
+  <title lang="en">Mission 03: Let's get em!</title>
+  <description>BLAH</description>
+  <reward>10000</reward>
+  <level_0_minionsrequired>0</level_0_minionsrequired>
+  <level_1_minionsrequired>0</level_1_minionsrequired>
+  <level_2_minionsrequired>2</level_2_minionsrequired>
+  <level_3_minionsrequired>0</level_3_minionsrequired>
+</mission>
+
+</missionlist>
+</root>

@@ -1,0 +1,61 @@
+<div id="actionImg"><p><img src="XmlSelectNodes.png" title="" /></p></div>
+<div id="actionDesc">
+<p>
+Gets nodes a xml text asset and an xpath query. Properties are referenced from the node itself, so a '.' is prepended if you use xpath within the property string like </p>
+</div>
+<div id="paramRow">
+	<div id="paramName">
+Xml Source</div>
+	<div id="paramDesc">
+TODO</div>
+</div>
+
+<div id="paramRow">
+	<div id="paramName">
+XPath Query</div>
+	<div id="paramDesc">
+TODO</div>
+</div>
+
+<div id="paramRow">
+	<div id="paramName">
+XPath Variables</div>
+	<div id="paramDesc">
+Author defined variables to inject into the xPathQuery using '_0_', '_1_' '_i_' etc to reference each variable</div>
+</div>
+
+<div id="paramRow">
+	<div id="paramName">
+Xml Result</div>
+	<div id="paramDesc">
+The result of the  xPathQuery, wrapped into a 'result' node, so that it's resuable and a valid xml</div>
+</div>
+
+<div id="paramRow">
+	<div id="paramName">
+Node Count</div>
+	<div id="paramDesc">
+The number of entries found for the xPathQuery</div>
+</div>
+
+<div id="paramRow">
+	<div id="paramName">
+Found Event</div>
+	<div id="paramDesc">
+TODO</div>
+</div>
+
+<div id="paramRow">
+	<div id="paramName">
+Not Found Event</div>
+	<div id="paramDesc">
+TODO</div>
+</div>
+
+<div id="paramRow">
+	<div id="paramName">
+Error Event</div>
+	<div id="paramDesc">
+TODO</div>
+</div>
+
