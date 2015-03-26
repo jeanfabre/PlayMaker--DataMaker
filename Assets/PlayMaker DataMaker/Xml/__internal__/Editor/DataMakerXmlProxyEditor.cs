@@ -26,7 +26,12 @@ public class DataMakerXmlProxyEditor : Editor {
 		_target.referenceName =  EditorGUILayout.TextField(new GUIContent("Reference"),_target.referenceName);
 		
 		_target.FsmEventTarget = EditorGUILayout.ObjectField(new GUIContent("Fsm Event Target"),_target.FsmEventTarget,typeof(PlayMakerFSM),true) as PlayMakerFSM;
-		
+
+		if (_target.isDirty)
+		{
+			Refresh();
+		}
+
 		if (!Application.isPlaying)
 		{
 			if (_target.useSource)
@@ -75,15 +80,17 @@ public class DataMakerXmlProxyEditor : Editor {
 					_target.XmlTextAsset = _asset;
 					Refresh();
 				}
+			}else{
+				empty = _target.xmlNode==null;
 
-			}	
+			}
 		}
-		
+
+		_target.storeInMemory =  EditorGUILayout.TextField(new GUIContent("Memory Storage Reference"),_target.storeInMemory);
 
 		if (empty)
 		{
 			DataMakerEditorGUILayoutUtils.feedbackLabel("No XML data",DataMakerEditorGUILayoutUtils.labelFeedbacks.WARNING);
-			
 		}else{
 			if (!valid)
 			{
@@ -95,20 +102,23 @@ public class DataMakerXmlProxyEditor : Editor {
 			
 			if (GUILayout.Button("Refresh"))
 			{
-				_target.RefreshContent();
-				Refresh();
+				_target.RefreshStringVersion();
 			}
-			if (GUILayout.Button("Save back to Text Asset file: "+_target.XmlTextAsset.name))
+
+			if (_target.XmlTextAsset!=null)
 			{
-				string assetPath = AssetDatabase.GetAssetPath(_target.XmlTextAsset.GetInstanceID());
-				
-				string path = Application.dataPath +  assetPath.Substring(6);
-				
-				Debug.Log (path+"/n"+_target.content);
-				
-				File.WriteAllText(path,_target.content);
-				AssetDatabase.LoadAssetAtPath(assetPath,typeof(TextAsset));
-				AssetDatabase.Refresh();
+				if (GUILayout.Button("Save back to Text Asset file: "+_target.XmlTextAsset.name))
+				{
+					string assetPath = AssetDatabase.GetAssetPath(_target.XmlTextAsset.GetInstanceID());
+					
+					string path = Application.dataPath +  assetPath.Substring(6);
+					
+					Debug.Log (path+"/n"+_target.content);
+					
+					File.WriteAllText(path,_target.content);
+					AssetDatabase.LoadAssetAtPath(assetPath,typeof(TextAsset));
+					AssetDatabase.Refresh();
+				}
 			}
 			
 		}
@@ -122,15 +132,18 @@ public class DataMakerXmlProxyEditor : Editor {
 	
 	void OnEnable()
 	{
-		Debug.Log("OnEnable");
-
 		Refresh();
 	}
 
 	void Refresh()
 	{
+		Debug.Log("refresh");
+		return;
+
 		DataMakerXmlProxy _target = target as DataMakerXmlProxy;
-		
+
+		_target.isDirty = false;
+
 		if (_target.xmlNode!=null)
 		{
 			/*
@@ -144,7 +157,7 @@ public class DataMakerXmlProxyEditor : Editor {
 				node = _target.xmlNode;
 				_target.content =DataMakerXmlUtils.XmlNodeToString(_target.xmlNode);
 				empty = string.IsNullOrEmpty(_target.content);
-				Debug.Log("PARSING XML NODE");
+				//Debug.Log("PARSING XML NODE");
 				valid = DataMakerXmlUtils.StringToXmlNode(_target.content) != null;
 			}
 		}
@@ -155,7 +168,7 @@ public class DataMakerXmlProxyEditor : Editor {
 			if (!empty || _target.content==null || !_target.content.Equals(_target.XmlTextAsset.text) ){
 				_target.content = _target.XmlTextAsset.text;
 				
-				Debug.Log("PARSING TEXT ASSET: \n"+_target.XmlTextAsset.text);
+				//Debug.Log("PARSING TEXT ASSET: \n"+_target.XmlTextAsset.text);
 				valid = DataMakerXmlUtils.StringToXmlNode(_target.content) != null;
 			}
 			

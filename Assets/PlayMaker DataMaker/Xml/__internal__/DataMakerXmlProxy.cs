@@ -15,7 +15,12 @@ using System.Xml;
 public class DataMakerXmlProxy : DataMakerProxyBase {
 	
 	static public bool delegationActive = true;
-	
+
+	/// <summary>
+	/// If defined, the xml of this proxy will be available in memory.
+	/// </summary>
+	public string storeInMemory ="";
+
 	public bool useSource;
 
 	public TextAsset XmlTextAsset;
@@ -32,7 +37,11 @@ public class DataMakerXmlProxy : DataMakerProxyBase {
 			_xmlNode = value;
 		}
 	}
-	
+
+	[HideInInspector]
+	[NonSerialized]
+	public bool isDirty;
+
 	[HideInInspector]
 	[NonSerialized]
 	public string content;
@@ -46,10 +55,10 @@ public class DataMakerXmlProxy : DataMakerProxyBase {
 		{
 			InjectXmlString(XmlTextAsset.text);
 			
-			if (!string.IsNullOrEmpty(this.referenceName))
+			if (!string.IsNullOrEmpty(this.storeInMemory))
 			{
-				Debug.Log("XmlStoreNode in "+this.referenceName);
-				DataMakerXmlUtils.XmlStoreNode(xmlNode,this.referenceName);
+				Debug.Log("XmlStoreNode in "+this.storeInMemory);
+				DataMakerXmlUtils.XmlStoreNode(xmlNode,this.storeInMemory);
 			}
 			
 		}
@@ -58,17 +67,17 @@ public class DataMakerXmlProxy : DataMakerProxyBase {
 		
 	}
 	
-	public void RefreshContent()
+	public void RefreshStringVersion()
 	{
+		Debug.Log("RefreshStringVersion");
 		content = DataMakerXmlUtils.XmlNodeToString(xmlNode);
-		//Debug.Log(content);
+		isDirty = true;
 	}
 	
 	public void InjectXmlNode(XmlNode node)
 	{
 		
 		xmlNode = node;
-		
 		RegisterEventHandlers();
 	}
 	
@@ -82,16 +91,12 @@ public class DataMakerXmlProxy : DataMakerProxyBase {
 		}
 		
 		RegisterEventHandlers();
-		
-		Debug.Log(DataMakerXmlUtils.XmlNodeToString(xmlNode));
 	}
 	
 	public void InjectXmlString(string source)
 	{
 		xmlNode = DataMakerXmlUtils.StringToXmlNode(source);
-		
 		RegisterEventHandlers();
-		
 	}
 	
 	

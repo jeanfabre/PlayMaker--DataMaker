@@ -68,11 +68,12 @@ namespace HutongGames.PlayMaker.Actions
 		
 		private void SelectNodeList ()
 		{
-			
+
+			nodeCount.Value = 0;
+
 			if (xmlSource.Value ==null)
 			{
 				Debug.LogWarning("XMl source is empty, or likely invalid");
-				
 				Fsm.Event (errorEvent);
 				return;
 			}
