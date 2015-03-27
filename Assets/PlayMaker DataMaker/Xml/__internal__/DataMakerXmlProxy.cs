@@ -49,24 +49,14 @@ public class DataMakerXmlProxy : DataMakerProxyBase {
 	public PlayMakerFSM FsmEventTarget;
 	
 	void Awake () {
-		
-		
 		if (useSource && XmlTextAsset!=null)
 		{
 			InjectXmlString(XmlTextAsset.text);
-			
-			if (!string.IsNullOrEmpty(this.storeInMemory))
-			{
-				Debug.Log("XmlStoreNode in "+this.storeInMemory);
-				DataMakerXmlUtils.XmlStoreNode(xmlNode,this.storeInMemory);
-			}
-			
 		}
 		
 		RegisterEventHandlers();
-		
 	}
-	
+
 	public void RefreshStringVersion()
 	{
 		Debug.Log("RefreshStringVersion");
@@ -76,7 +66,6 @@ public class DataMakerXmlProxy : DataMakerProxyBase {
 	
 	public void InjectXmlNode(XmlNode node)
 	{
-		
 		xmlNode = node;
 		RegisterEventHandlers();
 	}
@@ -89,13 +78,14 @@ public class DataMakerXmlProxy : DataMakerProxyBase {
 		{
 			xmlNode.AppendChild(_node);
 		}
-		
 		RegisterEventHandlers();
 	}
 	
 	public void InjectXmlString(string source)
 	{
+		Debug.Log("InjectXmlString :"+source);
 		xmlNode = DataMakerXmlUtils.StringToXmlNode(source);
+
 		RegisterEventHandlers();
 	}
 	

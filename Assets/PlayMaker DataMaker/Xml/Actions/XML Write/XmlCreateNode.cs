@@ -69,7 +69,13 @@ namespace HutongGames.PlayMaker.Actions
 			}
 
 			_node = parentNode.OwnerDocument.CreateNode(XmlNodeType.Element,nodeName.Value,null);
-			
+
+			if (_node== null)
+			{
+				Fsm.Event(errorEvent);
+				return;
+			}
+
 			if (! string.IsNullOrEmpty(storeReference.Value))
 			{
 				DataMakerXmlUtils.XmlStoreNode(_node,storeReference.Value);
