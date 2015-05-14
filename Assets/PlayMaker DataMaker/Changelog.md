@@ -8,11 +8,14 @@
 
 **Fix**  
 - Fixed _XmlGetNextnodeListProperties_ cache  
-- Create StoreInMemory string property for _DataMakerXmlProxyEditor_  
+
 
 
 **Improvement**  
 - Added Reset option for _XmlGetNextnodeListProperties_  
+
+**!!Deprecation!!**
+- Removed StoreInMemory string property for _DataMakerXmlProxyEditor_  ( it's better to manually select the node you want from the proxy)
 
 ### 1.0.0
 **New**  

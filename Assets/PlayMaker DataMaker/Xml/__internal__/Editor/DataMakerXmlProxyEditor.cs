@@ -135,7 +135,7 @@ public class DataMakerXmlProxyEditor : Editor {
 
 	void Refresh()
 	{
-		Debug.Log("refresh");
+	//	Debug.Log("refresh");
 
 
 		DataMakerXmlProxy _target = target as DataMakerXmlProxy;
@@ -155,7 +155,7 @@ public class DataMakerXmlProxyEditor : Editor {
 				node = _target.xmlNode;
 				_target.content =DataMakerXmlUtils.XmlNodeToString(_target.xmlNode);
 				empty = string.IsNullOrEmpty(_target.content);
-				Debug.Log("PARSING XML NODE");
+				//Debug.Log("PARSING XML NODE");
 				valid = DataMakerXmlUtils.StringToXmlNode(_target.content) != null;
 			}
 		}
@@ -166,7 +166,7 @@ public class DataMakerXmlProxyEditor : Editor {
 			if (!empty || _target.content==null || !_target.content.Equals(_target.XmlTextAsset.text) ){
 				_target.content = _target.XmlTextAsset.text;
 				
-				Debug.Log("PARSING TEXT ASSET: \n"+_target.XmlTextAsset.text);
+				//Debug.Log("PARSING TEXT ASSET: \n"+_target.XmlTextAsset.text);
 				valid = DataMakerXmlUtils.StringToXmlNode(_target.content) != null;
 			}
 			

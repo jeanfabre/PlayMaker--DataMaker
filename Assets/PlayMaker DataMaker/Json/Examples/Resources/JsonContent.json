@@ -1,0 +1,43 @@
+{
+  "totalResults":1,
+  "trophyTitles":[
+    {
+      "npCommunicationId":"NPWR00000_00",
+      "trophySetVersion":"01.00",
+      "trophyTitleName":"Sample Title",
+      "trophyTitleDetail":"Sample Title Detail.",
+      "trophyTitleIconUrl":"http://www.example.com/a000.png",
+      "trophyTitlePlatfrom":"PSVITA,PS4",
+      "hasTrophyGroups":true,
+      "definedTrophies":{
+        "bronze":20,
+        "silver":13,
+        "gold":5,
+        "platinum":1
+       },
+       "fromUser":{
+         "onlineId":"user000",
+         "progress":82,
+         "earnedTrophies":{
+           "bronze":15,
+           "silver":10,
+           "gold":4,
+           "platinum":0
+         },
+         "hiddenFlag":true,
+         "lastUpdateDate":"2014-01-01T01:00:00Z"
+       },
+       "comparedUser":{
+         "onlineId":"user001",
+         "progress":45,
+         "earnedTrophies":{
+           "bronze":8,
+           "silver":5,
+           "gold":2,
+           "platinum":0
+         },
+         "lastUpdateDate":"2014-01-01T01:00:00Z"
+       }
+     }
+   ]
+ }

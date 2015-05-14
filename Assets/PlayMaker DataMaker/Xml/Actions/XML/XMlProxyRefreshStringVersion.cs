@@ -21,7 +21,7 @@ namespace HutongGames.PlayMaker.Actions
 
 
 		[UIHint(UIHint.Description)] // Use on a string field to format the text in a large readonly info box.
-		public string descriptionArea = "Refreshing content is a costly operation, not required";
+		public string descriptionArea = "Refreshing content is a costly operation.\nUse this to watch live xml content in the proxy";
 		[Tooltip("Is true Only refresh content in editor.")]
 		public bool OnlyInEditor;
 

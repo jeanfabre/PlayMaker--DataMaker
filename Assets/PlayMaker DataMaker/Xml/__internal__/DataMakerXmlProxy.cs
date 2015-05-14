@@ -59,7 +59,7 @@ public class DataMakerXmlProxy : DataMakerProxyBase {
 
 	public void RefreshStringVersion()
 	{
-		Debug.Log("RefreshStringVersion");
+		//Debug.Log("RefreshStringVersion");
 		content = DataMakerXmlUtils.XmlNodeToString(xmlNode);
 		isDirty = true;
 	}
@@ -83,7 +83,7 @@ public class DataMakerXmlProxy : DataMakerProxyBase {
 	
 	public void InjectXmlString(string source)
 	{
-		Debug.Log("InjectXmlString :"+source);
+		//Debug.Log("InjectXmlString :"+source);
 		xmlNode = DataMakerXmlUtils.StringToXmlNode(source);
 
 		RegisterEventHandlers();
@@ -112,7 +112,7 @@ public class DataMakerXmlProxy : DataMakerProxyBase {
 	//Define the event handler.
 	void NodeTouchedHandler(object src, XmlNodeChangedEventArgs args)
 	{
-		Debug.Log("Node " + args.Node.Name + " action:"+args.Action);
+		//Debug.Log("Node " + args.Node.Name + " action:"+args.Action);
 		
 		if (FsmEventTarget==null || ! delegationActive)
 		{

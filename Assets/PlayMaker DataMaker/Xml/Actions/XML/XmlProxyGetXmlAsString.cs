@@ -19,6 +19,9 @@ namespace HutongGames.PlayMaker.Actions
 		[Tooltip("Author defined Reference of the DataMaker Xml Proxy component ( necessary if several component coexists on the same GameObject")]
 		public FsmString reference;
 
+		[Tooltip("Force the xml to be parsed as string. This is a costly operation")]
+		public FsmBool refreshContentFirst;
+
 		[ActionSection("Result")]
 
 		[Tooltip("The Xml content as string")]
@@ -28,6 +31,7 @@ namespace HutongGames.PlayMaker.Actions
 		public override void Reset ()
 		{
 			gameObject = null;
+			refreshContentFirst = true;
 			reference = null;
 			xmlString = null;
 		}
@@ -41,7 +45,14 @@ namespace HutongGames.PlayMaker.Actions
 				DataMakerXmlProxy proxy = DataMakerCore.GetDataMakerProxyPointer(typeof(DataMakerXmlProxy), go, reference.Value, false) as DataMakerXmlProxy;
 				
 				if (proxy!=null) {
+
+					if (refreshContentFirst.Value)
+					{
+						proxy.RefreshStringVersion();
+					}
+
 					xmlString.Value = proxy.content;
+
 				}
 			}
 			
