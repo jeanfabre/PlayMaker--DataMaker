@@ -54,24 +54,38 @@ namespace HutongGames.PlayMaker.Actions
 
 		public override void OnEnter ()
 		{
+
+			Finish ();
+		}
+
+		void CreateNode()
+		{
 			XmlNode parentNode = DataMakerXmlUtils.XmlRetrieveNode(parentNodeReference.Value);
-			
-			UnityEngine.Debug.Log(nodeName.Value);
+
+			if (parentNode==null)
+			{
+				Fsm.Event(errorEvent);
+				return;
+			}
+
 			_node = parentNode.OwnerDocument.CreateNode(XmlNodeType.Element,nodeName.Value,null);
-			
+
+			if (_node== null)
+			{
+				Fsm.Event(errorEvent);
+				return;
+			}
+
 			if (! string.IsNullOrEmpty(storeReference.Value))
 			{
 				DataMakerXmlUtils.XmlStoreNode(_node,storeReference.Value);
 			}
+
 			SetAttributes();
 			
 			parentNode.AppendChild(_node);
 			_node.InnerText = nodeInnerText.Value;
-			
-
-			Finish ();
 		}
-		
 		
 		private void SetAttributes ()
 		{

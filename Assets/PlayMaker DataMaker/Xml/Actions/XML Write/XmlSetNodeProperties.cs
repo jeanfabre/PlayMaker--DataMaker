@@ -63,7 +63,7 @@ namespace HutongGames.PlayMaker.Actions
 				att_i++;
 			}
 	
-			Debug.Log(_node.OwnerDocument.OuterXml);
+		//	Debug.Log(_node.OwnerDocument.OuterXml);
 			Finish ();
 		}
 		

@@ -143,7 +143,8 @@ namespace HutongGames.PlayMaker.Actions
 				
 				xmlString.Value= jsonSource.Value;
 			}
-			
+
+			proxy.RefreshStringVersion();
 			
 			Finish ();
 		}

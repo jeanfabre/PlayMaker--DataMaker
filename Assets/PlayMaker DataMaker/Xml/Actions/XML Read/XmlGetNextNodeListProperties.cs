@@ -1,4 +1,4 @@
-// (c) Copyright HutongGames, LLC 2010-2014. All rights reserved.
+// (c) Copyright HutongGames, LLC 2010-2015. All rights reserved.
 
 using UnityEngine;
 using System.Collections;
@@ -11,15 +11,19 @@ namespace HutongGames.PlayMaker.Actions
 {
 	[ActionCategory("DataMaker Xml")]
 	[Tooltip("Get the next node properties in a nodelist. \nEach time this action is called it gets the next node." +
-	 	"This lets you quickly loop through all the nodelist to perform actions per nodes.")]
+	         "This lets you quickly loop through all the nodelist to perform actions per nodes.")]
 	public class XmlGetNextNodeListProperties : DataMakerXmlActions
 	{
 		[ActionSection("XML Source")]
-			
+		
 		public FsmString nodeListReference;
 		
 		[ActionSection("Set up")]
-
+		
+		[Tooltip("Set to true to force iterating from the value of the index variable. This variable will be set to false as it carries on iterating, force it back to true if you want to renter this action back to the first item.")]
+		[UIHint(UIHint.Variable)]
+		public FsmBool reset;
+		
 		[Tooltip("Event to send for looping.")]
 		public FsmEvent loopEvent;
 		
@@ -28,19 +32,19 @@ namespace HutongGames.PlayMaker.Actions
 		
 		[ActionSection("Result")]
 		
+		[Tooltip("Save the node into memory")]
+		public FsmString indexedNodeReference;
+		
 		[Tooltip("The index into the node List")]
 		[UIHint(UIHint.Variable)]
 		public FsmInt index;
 		
-		[Tooltip("The memory reference of the current node")]
-		public FsmString reference;
-		
 		public FsmXmlPropertiesStorage storeProperties;
 		
-
+		
 		// increment an index as we loop through items
 		private int nextItemIndex;
-
+		
 		// are we there yet?
 		private bool noMoreItems;
 		
@@ -53,15 +57,26 @@ namespace HutongGames.PlayMaker.Actions
 			
 			storeProperties = null;
 			
+			reset = null;
+			
 			finishedEvent = null;
 			loopEvent = null;
 			
+			indexedNodeReference = new FsmString() {UseVariable=true};
+			
 			index = null;
-			reference = null;
 		}
 		
 		public override void OnEnter()
 		{
+			
+			if (reset.Value)
+			{
+				reset.Value =  false;
+				nextItemIndex = index.Value;
+				_nodeList = null;
+			}
+			
 			if (_nodeList==null)
 			{
 				_nodeList = DataMakerXmlUtils.XmlRetrieveNodeList(nodeListReference.Value);
@@ -76,7 +91,7 @@ namespace HutongGames.PlayMaker.Actions
 			
 			Finish();
 		}
-				
+		
 		void DoGetNextNode()
 		{		
 			// no more items?
@@ -90,22 +105,18 @@ namespace HutongGames.PlayMaker.Actions
 				Fsm.Event(finishedEvent);
 				return;
 			}
-
+			
+			if (!string.IsNullOrEmpty(indexedNodeReference.Value))
+			{
+				DataMakerXmlUtils.XmlStoreNode(_nodeList[nextItemIndex],indexedNodeReference.Value);
+			}
+			
 			// get next item properties
 			index.Value = nextItemIndex;
-
-			XmlNode _node = _nodeList[nextItemIndex];
-
-
-			storeProperties.StoreNodeProperties(this.Fsm,_node);
-		
-
-			if (! string.IsNullOrEmpty(reference.Value))
-			{
-				DataMakerXmlUtils.XmlStoreNode(_node,reference.Value);
-			}
+			storeProperties.StoreNodeProperties(this.Fsm,_nodeList[nextItemIndex]);
+			
+			
 			// no more items?
-
 			if (nextItemIndex >= _count)
 			{
 				Fsm.Event(finishedEvent);

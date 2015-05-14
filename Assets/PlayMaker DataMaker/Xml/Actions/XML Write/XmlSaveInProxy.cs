@@ -29,13 +29,18 @@ namespace HutongGames.PlayMaker.Actions
 		
 		[Tooltip("Author defined Reference of the DataMaker Xml Proxy component ( necessary if several component coexists on the same GameObject")]
 		public FsmString reference;
+
 		
+		[ActionSection("Feedback")]
+		public FsmEvent errorEvent;
+
 		public override void Reset ()
 		{
 			storeReference = new FsmString(){UseVariable=true};
 			xmlSource = new FsmString(){UseVariable=true};
 			gameObject = null;
 			reference = null;
+			errorEvent = null;
 		}
 
 		public override void OnEnter ()
@@ -54,10 +59,10 @@ namespace HutongGames.PlayMaker.Actions
 				{
 					proxy.InjectXmlString(xmlSource.Value);
 				}
+			}else{
+				Fsm.Event(errorEvent);
 			}
-			
-		
-			
+
 			Finish ();
 		}
 

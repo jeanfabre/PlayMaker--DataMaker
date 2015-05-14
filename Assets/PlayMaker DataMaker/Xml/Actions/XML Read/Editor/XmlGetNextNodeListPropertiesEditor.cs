@@ -16,7 +16,8 @@ public class XmlGetNextNodeListPropertiesEditor : CustomActionEditor
 		XmlGetNextNodeListProperties _target = (XmlGetNextNodeListProperties)target;
 		
 		EditField("nodeListReference");
-		
+
+		EditField("reset");
 		EditField("loopEvent");
 		EditField("finishedEvent");
 		EditField("index");
