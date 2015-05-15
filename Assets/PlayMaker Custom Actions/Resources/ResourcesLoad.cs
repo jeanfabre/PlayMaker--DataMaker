@@ -1,4 +1,6 @@
-// (c) Copyright HutongGames, LLC 2010-2012. All rights reserved.
+// (c) Copyright HutongGames, LLC 2010-2015. All rights reserved.
+// AudioClip support by LampRabbit
+/*--- __ECO__ __ACTION__ ---*/
 
 using UnityEngine;
 
@@ -60,11 +62,13 @@ namespace HutongGames.PlayMaker.Actions
 					break;
 				case VariableType.Material:
 					break;
-				case VariableType.String:
+			case VariableType.String:
+					break;
+			case VariableType.Object:
 					break;
 				default:
 					// not supported.
-					return "Only GameObject, Texture and Material and textAssets are supported";
+					return "Only GameObject, Texture, AudioClip and Material are supported";
 				}	
 			
 			return "";
@@ -111,13 +115,23 @@ namespace HutongGames.PlayMaker.Actions
 				}
 				break;
 			case VariableType.String:
-				TextAsset _textAsset = (TextAsset)Resources.Load(assetPath.Value, typeof(TextAsset));
-				if (_textAsset==null)
+				TextAsset _asset = (TextAsset)Resources.Load(assetPath.Value, typeof(TextAsset));
+				if (_asset==null)
 				{
 					return false;
 				}else{
 					FsmString _target= this.Fsm.Variables.GetFsmString(storeAsset.variableName);
-					_target.Value = _textAsset.text;
+					_target.Value = _asset.text;
+				}
+				break;
+			case VariableType.Object:
+				AudioClip audioClip = (AudioClip)Resources.Load(assetPath.Value,typeof(AudioClip));
+				if (audioClip==null)
+				{
+					return false;
+				}else{
+					FsmObject _target= this.Fsm.Variables.GetFsmObject(storeAsset.variableName);
+					_target.Value = audioClip;
 				}
 				break;
 			default:

@@ -1,4 +1,5 @@
-// (c) Copyright HutongGames, LLC 2010-2011. All rights reserved.
+// (c) Copyright HutongGames, LLC 2010-2014. All rights reserved.
+/*--- __ECO__ __ACTION__ ---*/
 
 using UnityEngine;
 
@@ -22,7 +23,7 @@ namespace HutongGames.PlayMaker.Actions
 		public override void OnUpdate()
 		{
 			storeResult.Value = Input.inputString;
-			if (Input.anyKeyDown)
+			if (Input.anyKey)
 				Fsm.Event(sendEvent);		
 		}
 	}

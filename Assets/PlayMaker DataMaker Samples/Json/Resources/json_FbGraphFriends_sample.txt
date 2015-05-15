@@ -1,0 +1,19 @@
+{
+  "data": [
+    {
+      "name": "John Doe", 
+      "id": "123123123"
+    }, 
+    {
+      "name": "Jane Doe", 
+      "id": "12312312312312"
+    }, 
+    {
+      "name": "Bob Smith", 
+      "id": "123123123123123"
+    }
+  ], 
+  "paging": {
+    "next": "https://graph.facebook.com/123123123/friends?limit=5000&offset=5000&__after_id=123123123123"
+  }
+}
