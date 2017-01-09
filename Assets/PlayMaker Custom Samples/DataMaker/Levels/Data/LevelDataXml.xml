@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ArrayOfLevel xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Level>
+    <IdLevel>1</IdLevel>
+    <NameLevel>Level 1</NameLevel>
+    <Scenario>0</Scenario>
+  	<SpeeedStart>10</SpeeedStart>
+    <ChunkBossRate>20</ChunkBossRate>	
+    <RankSpeeds>
+      <RankSpeed>
+        <Distance>100</Distance>
+        <Value>15</Value>
+        <Reward>1</Reward>
+      </RankSpeed>
+      <RankSpeed>
+        <Distance>500</Distance>
+        <Value>20</Value>
+        <Reward>1</Reward>
+      </RankSpeed>
+      <RankSpeed>
+        <Distance>2000</Distance>
+        <Value>30</Value>
+        <Reward>1</Reward>
+      </RankSpeed>
+    </RankSpeeds>
+    <ChunkActive>
+      <int>1</int>
+      <int>2</int>
+      <int>3</int>
+      <int>4</int>
+	  <int>5</int>
+	  <int>6</int>
+    </ChunkActive>
+  </Level>
+  <Level>
+    <IdLevel>2</IdLevel>
+    <NameLevel>Level 2</NameLevel>
+    <Scenario>0</Scenario>
+    <SpeeedStart>12</SpeeedStart>
+	  <ChunkBossRate>20</ChunkBossRate>
+    <RankSpeeds>
+      <RankSpeed>
+        <Distance>100</Distance>
+        <Value>10</Value>
+        <Reward>1</Reward>
+      </RankSpeed>
+      <RankSpeed>
+        <Distance>200</Distance>
+        <Value>15</Value>
+        <Reward>1</Reward>
+      </RankSpeed>
+      <RankSpeed>
+        <Distance>300</Distance>
+        <Value>10</Value>
+        <Reward>1</Reward>
+      </RankSpeed>
+    </RankSpeeds>
+    <ChunkActive>
+      <int>1</int>
+      <int>2</int>
+      <int>3</int>
+      <int>4</int>
+    </ChunkActive>
+  </Level>
+</ArrayOfLevel>

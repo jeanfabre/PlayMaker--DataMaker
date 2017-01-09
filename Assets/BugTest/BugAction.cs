@@ -8,17 +8,18 @@ namespace HutongGames.PlayMaker.Actions
 	public class BugAction : FsmStateAction
 	{
 
-		public FsmString myFsmString = new FsmString();
-		
+		public ClassWithFsmVariables myClass = new ClassWithFsmVariables();
+
 		public override void Reset()
 		{
+
 		}
-		
+
 		public override void OnEnter()
 		{
-			if (myFsmString!=null)
+			if (myClass!=null)
 			{
-			UnityEngine.Debug.Log(myFsmString.Value);
+				UnityEngine.Debug.Log(myClass.MyName);
 			}else{
 				UnityEngine.Debug.Log("myFsmString is null");
 			}
@@ -26,4 +27,20 @@ namespace HutongGames.PlayMaker.Actions
 			Finish ();
 		}
 	}
+
+
+
+	public class ClassWithFsmVariables : FsmStateAction
+	{
+		public FsmString MyName;
+
+		[CompoundArray("Properties", "MyList", "MyVariable")] // that would be a good alternatice, but I can't make it work within this class.
+		public FsmString[] MyList;
+		public FsmVar[] MyVariables;
+	}
 }
+
+
+
+
+

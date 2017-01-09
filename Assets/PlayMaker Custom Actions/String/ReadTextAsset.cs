@@ -1,4 +1,5 @@
-// (c) Copyright HutongGames, LLC 2010-2013. All rights reserved.
+// (c) Copyright HutongGames, LLC 2010-2016. All rights reserved.
+/*--- __ECO__ __PLAYMAKER__ __ACTION__ ---*/
 
 using UnityEngine;
 
@@ -9,6 +10,7 @@ namespace HutongGames.PlayMaker.Actions
 	public class ReadTextAsset : FsmStateAction
 	{
 		[RequiredField]
+		[Tooltip("The text asset")]
 		public TextAsset textAsset;
 		
 		[Tooltip("The content of the text asset")]
@@ -27,7 +29,6 @@ namespace HutongGames.PlayMaker.Actions
 			if (textAsset!=null)
 			{
 				content.Value = textAsset.text;
-			//	UnityEngine.Debug.Log(content.Value);
 			}
 			
 			Finish();
