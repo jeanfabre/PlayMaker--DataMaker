@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<MeFace default="true" >
+		<Name></Name>
+		<Feature type="Head">
+			<Color>1</Color>
+		</Feature>
+		<Feature type="Hair">
+			<Shape>Man1</Shape>
+			<Color>black</Color>
+			<Transform>
+				<Position>0,0</Position>
+				<Rotation>0</Rotation>
+			</Transform>
+		</Feature>
+		<Feature type="Mouth">
+			<Shape>teethUpper</Shape>
+			<Transform>
+				<Position>0.037,-0.503</Position>
+				<Rotation>0</Rotation>
+			</Transform>
+		</Feature>
+		<Feature type="Nose">
+			<Shape>Nose2</Shape>
+			<Color>1</Color>
+			<Transform>
+				<Position>0.09,-0.191</Position>
+				<Rotation>0</Rotation>
+			</Transform>
+		</Feature>
+		<Feature type="LeftEye">
+			<Shape>small</Shape>
+			<Color>Blue</Color>
+			<Transform>
+				<Position>-0.26,0.07</Position>
+				<Rotation>0</Rotation>
+			</Transform>
+		</Feature>
+		<Feature type="RightEye">
+			<Shape>small</Shape>
+			<Color>Blue</Color>
+			<Transform>
+				<Position>0.238,0.07</Position>
+				<Rotation>0</Rotation>
+			</Transform>
+		</Feature>
+		<Feature type="LeftEyeBrow">
+			<Shape>brow3</Shape>
+			<Color>brown1</Color>
+			<Transform>
+				<Position>-0.293,0.326</Position>
+				<Rotation>0</Rotation>
+			</Transform>
+		</Feature>
+		<Feature type="RightEyeBrow">
+			<Shape>brow3</Shape>
+			<Color>brown1</Color>
+			<Transform>
+				<Position>-0.288,0.368</Position>
+				<Rotation>0</Rotation>
+			</Transform>
+		</Feature>
+	</MeFace>
+</root>

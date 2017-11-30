@@ -3,6 +3,7 @@
 
 using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 
 
 namespace HutongGames.PlayMaker.Actions
@@ -13,8 +14,7 @@ namespace HutongGames.PlayMaker.Actions
 	{
 		
 		[RequiredField]
-		[CheckForComponent(typeof(SpriteRenderer))]
-		[Tooltip("The GameObject with a Sprite Renderer.")]
+		[Tooltip("The GameObject with a Sprite Renderer Component or a Ui Image component.")]
 		public FsmOwnerDefault gameObject;
 
 		[ObjectType(typeof(Sprite))]
@@ -22,6 +22,9 @@ namespace HutongGames.PlayMaker.Actions
 		public FsmObject sprite;
 
 		private SpriteRenderer spriteRenderer;
+		private Image spriteImage;
+
+
 
 		public override void Reset()
 		{
@@ -35,24 +38,34 @@ namespace HutongGames.PlayMaker.Actions
 			if (go == null) return;
 			
 			spriteRenderer = go.GetComponent<SpriteRenderer>();
-			
-			if (spriteRenderer == null)
+
+			spriteImage = go.GetComponent<Image>();
+
+
+			bool ok = DoSetSprite();
+
+			if (!ok)
 			{
-				LogError("SwapSingleSprite: Missing SpriteRenderer!");
+				LogError("SetSprite: Missing SpriteRenderer or Image component!");
 				return;
 			}
 
-			DoSetSprite();
-			
 			Finish();
 		}
 
-		void DoSetSprite()
+		bool DoSetSprite()
 		{
-			spriteRenderer.sprite = sprite.Value as Sprite;
+			if (spriteRenderer) {
+				spriteRenderer.sprite = sprite.Value as Sprite;
+				return true;
+			}
+
+			if (spriteImage) {
+				spriteImage.sprite = sprite.Value as Sprite;
+				return true;
+			}
+
+			return false;
 		}
-
-
-		
 	}
 }
