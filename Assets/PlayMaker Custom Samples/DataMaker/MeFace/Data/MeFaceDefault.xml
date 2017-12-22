@@ -21,7 +21,7 @@
 			</Transform>
 		</Feature>
 		<Feature type="Nose">
-			<Shape>Nose2</Shape>
+			<Shape>1</Shape>
 			<Color>1</Color>
 			<Transform>
 				<Position>0.09,-0.191</Position>
@@ -45,7 +45,7 @@
 			</Transform>
 		</Feature>
 		<Feature type="LeftEyeBrow">
-			<Shape>brow3</Shape>
+			<Shape>3</Shape>
 			<Color>brown1</Color>
 			<Transform>
 				<Position>-0.293,0.326</Position>
@@ -53,7 +53,7 @@
 			</Transform>
 		</Feature>
 		<Feature type="RightEyeBrow">
-			<Shape>brow3</Shape>
+			<Shape>3</Shape>
 			<Color>brown1</Color>
 			<Transform>
 				<Position>-0.288,0.368</Position>
