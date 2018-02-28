@@ -24,7 +24,7 @@
 			<Shape>1</Shape>
 			<Color>1</Color>
 			<Transform>
-				<Position>0.09,-0.191</Position>
+				<Position>0,-0.191</Position>
 				<Rotation>0</Rotation>
 			</Transform>
 		</Feature>
@@ -56,7 +56,7 @@
 			<Shape>3</Shape>
 			<Color>brown1</Color>
 			<Transform>
-				<Position>-0.288,0.368</Position>
+				<Position>0.288,0.368</Position>
 				<Rotation>0</Rotation>
 			</Transform>
 		</Feature>
