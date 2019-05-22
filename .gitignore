@@ -51,4 +51,5 @@ Assets/EditorGUI Style Viewer/
 Assets/EWS\.GUI\.meta
 
 Assets/EWS\.GUI/
-.vs
+.vs/
+.idea/
